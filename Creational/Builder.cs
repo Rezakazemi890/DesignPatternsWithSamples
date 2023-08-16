@@ -6,7 +6,7 @@ namespace DesignPattern.Creational;
 /// The builder pattern is an object creation software design pattern
 /// with the intentions of finding a solution to the telescoping constructor anti-pattern.
 /// </summary>
-public static class Builder
+public class Builder
 {
     public class Burger
     {
