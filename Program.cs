@@ -216,6 +216,8 @@ LogSeperator();
 
 #endregion
 
+#region Utils
+
 Console.ReadLine();
 
 void LogSeperator()
@@ -232,3 +234,5 @@ void AddTitle(string title)
     Console.WriteLine(title);
     Console.ResetColor();
 }
+
+#endregion
