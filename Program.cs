@@ -198,6 +198,22 @@ remote.PressOffButton(1);
 
 LogSeperator();
 
+//Mediator
+
+AddTitle("Mediator:");
+
+Mediator.IAirTrafficControl atc = new Mediator.AirTrafficControl();
+
+Mediator.IAircraft aircraft1 = new Mediator.Aircraft("Flight123", atc);
+Mediator.IAircraft aircraft2 = new Mediator.Aircraft("Flight456", atc);
+Mediator.IAircraft aircraft3 = new Mediator.Aircraft("Flight789", atc);
+
+aircraft1.SendWarning("Traffic ahead.");
+aircraft2.SendWarning("Turbulence reported.");
+aircraft3.SendWarning("Hijack Warning.");
+
+LogSeperator();
+
 #endregion
 
 Console.ReadLine();
