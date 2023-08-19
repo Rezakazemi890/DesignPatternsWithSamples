@@ -48,7 +48,7 @@ public class Abstract
         }
     }
 
-    private interface IWindowFactory
+    public interface IWindowFactory
     {
         IWindow MakeWindow();
         IWindowFittingExpert MakeFittingExpert();
