@@ -1,12 +1,12 @@
 # DesignPattern
-# Building Robust and Maintainable Software
 
 - Design patterns are reusable solutions to common programming problems.
 - Improved code organization, reusability, and better software architecture.
+- Knowing them is essential for interviews.
 
 ### Three main categories of design patterns:
 #### Creational Patterns
-Like : Singleton, Simple Factory, Abstract, Builder, Factory Method, …
+Like : Singleton, Simple Factory, Factory Method, Abstract, Builder, …
 #### Structural Patterns
 Like: Adapter, Decorator, Proxy, Facade, …
 #### Behavioral Patterns

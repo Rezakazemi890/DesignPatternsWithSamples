@@ -47,22 +47,18 @@ LogSeperator();
 //Abstract
 AddTitle("Abstract:");
 
-var woodenWindowFactory = new Abstract.WoodenWindowFactory();
-
-var woodenWindow = woodenWindowFactory.MakeWindow();
-var woodenWindowFittingExpert = woodenWindowFactory.MakeFittingExpert();
-
+Abstract.IWindowFactory woodenWindowFactory = new Abstract.WoodenWindowFactory();
+Abstract.IWindow woodenWindow = woodenWindowFactory.MakeWindow();
+Abstract.IWindowFittingExpert woodenWindowFittingExpert = woodenWindowFactory.MakeFittingExpert();
 woodenWindow.GetDescription();
 woodenWindowFittingExpert.GetDescription();
 
-
-var ironWindowFactory = new Abstract.IronWindowFactory();
-
-var ironWindow = ironWindowFactory.MakeWindow();
-var ironWindowFittingExpert = ironWindowFactory.MakeFittingExpert();
-
+Abstract.IWindowFactory ironWindowFactory = new Abstract.IronWindowFactory();
+Abstract.IWindow ironWindow = ironWindowFactory.MakeWindow();
+Abstract.IWindowFittingExpert ironWindowFittingExpert = ironWindowFactory.MakeFittingExpert();
 ironWindow.GetDescription();
 ironWindowFittingExpert.GetDescription();
+
 LogSeperator();
 
 #endregion
@@ -216,6 +212,8 @@ LogSeperator();
 
 #endregion
 
+#region Utils
+
 Console.ReadLine();
 
 void LogSeperator()
@@ -232,3 +230,5 @@ void AddTitle(string title)
     Console.WriteLine(title);
     Console.ResetColor();
 }
+
+#endregion

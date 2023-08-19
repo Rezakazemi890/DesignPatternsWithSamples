@@ -33,8 +33,7 @@ public class FactoryMethod
 
     public abstract class ChairSeller
     {
-        // Factory method
-        abstract protected IChair ChairCreator();
+        protected abstract IChair ChairCreator();
 
         public void SellChair()
         {
