@@ -1,14 +1,11 @@
-﻿using DesignPattern.Behavioral;
-using DesignPattern.Creational;
-using DesignPattern.Structural;
-
-#region Creational
+﻿#region Creational
 
 //Singleton
 AddTitle("Singleton:");
 
-var instance = Singleton.GetInstance();
-Console.WriteLine($"{instance.GetHashCode().ToString()}");
+var instance1 = Singleton.GetInstance();
+var instance2 = Singleton.GetInstance();
+Console.WriteLine($"References Are Equal? {ReferenceEquals(instance1, instance2)}");
 
 LogSeperator();
 
@@ -95,7 +92,6 @@ AddTitle("Proxy:");
 Proxy.ISensitiveData adminData = new Proxy.SensitiveDataProxy("Admin");
 Proxy.ISensitiveData regularUser = new Proxy.SensitiveDataProxy("User");
 
-// Admin can access sensitive data, but regular user is denied
 adminData.AccessData();
 regularUser.AccessData();
 
@@ -114,11 +110,9 @@ LogSeperator();
 #region Behavioral
 
 //Observer
-
 AddTitle("Observer:");
 
 Observer.WeatherStation weatherStation = new Observer.WeatherStation();
-
 Observer.IObserver observer1 = new Observer.ConcreteObserver("Observer 1");
 Observer.IObserver observer2 = new Observer.ConcreteObserver("Observer 2");
 Observer.IObserver observer3 = new Observer.ConcreteObserver("Observer 3");
@@ -136,7 +130,6 @@ weatherStation.SetTemperature(28.0f);
 LogSeperator();
 
 //Strategy
-
 AddTitle("Strategy:");
 
 Strategy.ShoppingCart cart = new Strategy.ShoppingCart();
@@ -153,16 +146,15 @@ cart.Checkout(80000);
 LogSeperator();
 
 //Chain Of Responsibility
-
 AddTitle("Chain Of Responsibility:");
 
 ChainOfResponsibility.IHelpDeskHandler helpDeskHandler = new ChainOfResponsibility.LevelOneSupport();
 
-ChainOfResponsibility.HelpDeskTicket lowSeverityTicket =
+var lowSeverityTicket =
     new ChainOfResponsibility.HelpDeskTicket(Severity: 1, Description: "Printer issue");
-ChainOfResponsibility.HelpDeskTicket mediumSeverityTicket =
+var mediumSeverityTicket =
     new ChainOfResponsibility.HelpDeskTicket(Severity: 2, Description: "Software problem");
-ChainOfResponsibility.HelpDeskTicket highSeverityTicket =
+var highSeverityTicket =
     new ChainOfResponsibility.HelpDeskTicket(Severity: 4, Description: "Server down");
 
 helpDeskHandler.HandleTicket(lowSeverityTicket);
@@ -172,7 +164,6 @@ helpDeskHandler.HandleTicket(highSeverityTicket);
 LogSeperator();
 
 //Command
-
 AddTitle("Command:");
 
 Command.RemoteControl remote = new Command.RemoteControl();
