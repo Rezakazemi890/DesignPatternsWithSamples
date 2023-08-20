@@ -12,7 +12,8 @@ public class ChainOfResponsibility
     {
         void HandleTicket(HelpDeskTicket ticket);
     }
-
+    public record HelpDeskTicket(int Severity, string Description);
+    
     public class LevelOneSupport : IHelpDeskHandler
     {
         private readonly IHelpDeskHandler _nextHandler = new LevelTwoSupport();
@@ -56,6 +57,4 @@ public class ChainOfResponsibility
                 : $"Support Level 3 cannot handle this ticket. with Desc: {ticket.Description}");
         }
     }
-
-    public record HelpDeskTicket(int Severity, string Description);
 }
