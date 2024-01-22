@@ -201,6 +201,53 @@ aircraft3.SendWarning("Hijack Warning.");
 
 LogSeperator();
 
+//State
+AddTitle("State");
+
+State.TrafficLight trafficLight = new State.TrafficLight();
+
+// Simulate traffic light changes
+trafficLight.Change(); // Red to Yellow
+trafficLight.Change(); // Yellow to Green
+trafficLight.Change(); // Green to Red
+
+LogSeperator();
+
+//Template Method
+
+AddTitle("Template Method");
+
+Console.WriteLine("Making tea:");
+TemplateMethod.Tea tea = new TemplateMethod.Tea();
+tea.PrepareBeverage();
+
+Console.WriteLine("\nMaking coffee:");
+TemplateMethod.Coffee coffee = new TemplateMethod.Coffee();
+coffee.PrepareBeverage();
+
+LogSeperator();
+
+//Visitor
+
+AddTitle("Visitor");
+
+var shapes = new List<Visitor.IShape>
+{
+    new Visitor.Circle(3),
+    new Visitor.Square(4),
+    new Visitor.Circle(5),
+    new Visitor.Square(2)
+};
+
+var areaCalculator = new Visitor.AreaCalculator();
+
+foreach (var shape in shapes)
+{
+    shape.Accept(areaCalculator);
+}
+
+LogSeperator();
+
 #endregion
 
 #region Utils
