@@ -227,6 +227,27 @@ coffee.PrepareBeverage();
 
 LogSeperator();
 
+//Visitor
+
+AddTitle("Visitor");
+
+var shapes = new List<Visitor.IShape>
+{
+    new Visitor.Circle(3),
+    new Visitor.Square(4),
+    new Visitor.Circle(5),
+    new Visitor.Square(2)
+};
+
+var areaCalculator = new Visitor.AreaCalculator();
+
+foreach (var shape in shapes)
+{
+    shape.Accept(areaCalculator);
+}
+
+LogSeperator();
+
 #endregion
 
 #region Utils
