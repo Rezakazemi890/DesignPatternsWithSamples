@@ -201,6 +201,17 @@ aircraft3.SendWarning("Hijack Warning.");
 
 LogSeperator();
 
+//State
+AddTitle("State");
+
+State.TrafficLight trafficLight = new State.TrafficLight();
+
+// Simulate traffic light changes
+trafficLight.Change(); // Red to Yellow
+trafficLight.Change(); // Yellow to Green
+trafficLight.Change(); // Green to Red
+
+LogSeperator();
 #endregion
 
 #region Utils
