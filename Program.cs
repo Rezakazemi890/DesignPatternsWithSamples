@@ -212,6 +212,21 @@ trafficLight.Change(); // Yellow to Green
 trafficLight.Change(); // Green to Red
 
 LogSeperator();
+
+//Template Method
+
+AddTitle("Template Method");
+
+Console.WriteLine("Making tea:");
+TemplateMethod.Tea tea = new TemplateMethod.Tea();
+tea.PrepareBeverage();
+
+Console.WriteLine("\nMaking coffee:");
+TemplateMethod.Coffee coffee = new TemplateMethod.Coffee();
+coffee.PrepareBeverage();
+
+LogSeperator();
+
 #endregion
 
 #region Utils
