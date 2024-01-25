@@ -331,6 +331,17 @@ Console.WriteLine($"Restored State: {originator.State}");
 
 LogSeperator();
 
+//Interpreter
+AddTitle("Interpreter");
+
+Interpreter.IExpression expression = new Interpreter.AddExpression(new Interpreter.NumberExpression(1), new Interpreter.NumberExpression(2));
+
+var context = new Interpreter.Context();
+expression.Interpret(context);
+
+Console.WriteLine("Result: " + context.Output);  // Result: 3
+
+LogSeperator();
 #endregion
 
 #region Utils
