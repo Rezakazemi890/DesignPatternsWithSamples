@@ -143,6 +143,18 @@ compositeGraphic.Draw();
 
 LogSeperator();
 
+//Flyweight
+AddTitle("Flyweight");
+
+var shapeFactory = new Flyweight.ShapeFactory();
+
+var flyCircle1 = shapeFactory.GetShape("5");
+flyCircle1.Draw(1, 2);
+
+var flyCircle2 = shapeFactory.GetShape("10");
+flyCircle2.Draw(3, 4);
+
+LogSeperator();
 #endregion
 
 #region Behavioral
