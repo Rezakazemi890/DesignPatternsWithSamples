@@ -116,6 +116,13 @@ facadeOperator.PerformOperations();
 
 LogSeperator();
 
+//Bridge
+AddTitle("Bridge");
+
+Bridge.Shape redCircle = new Bridge.BridgeCircle(10, 10, 5, new Bridge.DrawApi1());
+redCircle.Draw();
+
+LogSeperator();
 #endregion
 
 #region Behavioral
