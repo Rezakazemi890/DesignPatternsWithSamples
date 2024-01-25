@@ -312,6 +312,25 @@ while (iterator.HasNext())
 
 LogSeperator();
 
+//Memento
+AddTitle("Memento");
+
+var originator = new Memento.Originator();
+var caretaker = new Memento.Caretaker();
+
+originator.State = "State1";
+Console.WriteLine($"Current State: {originator.State}");
+
+caretaker.Memento = originator.CreateMemento();
+
+originator.State = "State2";
+Console.WriteLine($"Updated State: {originator.State}");
+
+originator.RestoreMemento(caretaker.Memento);
+Console.WriteLine($"Restored State: {originator.State}");
+
+LogSeperator();
+
 #endregion
 
 #region Utils
