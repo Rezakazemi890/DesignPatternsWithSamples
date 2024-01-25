@@ -298,6 +298,20 @@ foreach (var shape in shapes)
 
 LogSeperator();
 
+//Iterator
+AddTitle("Iterator");
+
+var aggregate = new Iterator.ConcreteAggregate();
+var iterator = aggregate.GetIterator();
+
+while (iterator.HasNext())
+{
+    var item = iterator.Next();
+    Console.WriteLine(item);
+}
+
+LogSeperator();
+
 #endregion
 
 #region Utils
