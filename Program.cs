@@ -123,6 +123,26 @@ Bridge.Shape redCircle = new Bridge.BridgeCircle(10, 10, 5, new Bridge.DrawApi1(
 redCircle.Draw();
 
 LogSeperator();
+
+//Composite
+AddTitle("Composite");
+
+// Create leaf objects
+var circle1 = new Composite.CompositeCircle();
+var circle2 = new Composite.CompositeCircle();
+
+// Create composite object
+var compositeGraphic = new Composite.CompositeGraphic();
+compositeGraphic.Add(circle1);
+compositeGraphic.Add(circle2);
+
+// Draw individual objects and the composite object
+circle1.Draw();
+circle2.Draw();
+compositeGraphic.Draw();
+
+LogSeperator();
+
 #endregion
 
 #region Behavioral
