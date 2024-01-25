@@ -58,6 +58,17 @@ ironWindowFittingExpert.GetDescription();
 
 LogSeperator();
 
+//Prototype
+AddTitle("Prototype");
+
+var originalCircle = new Prototype.Circle { Radius = 5 };
+// Clone the prototype
+var clonedCircle = (Prototype.Circle)originalCircle.Clone();
+
+originalCircle.Draw();
+clonedCircle.Draw();
+
+LogSeperator();
 #endregion
 
 #region Structural
@@ -105,6 +116,45 @@ facadeOperator.PerformOperations();
 
 LogSeperator();
 
+//Bridge
+AddTitle("Bridge");
+
+Bridge.Shape redCircle = new Bridge.BridgeCircle(10, 10, 5, new Bridge.DrawApi1());
+redCircle.Draw();
+
+LogSeperator();
+
+//Composite
+AddTitle("Composite");
+
+// Create leaf objects
+var circle1 = new Composite.CompositeCircle();
+var circle2 = new Composite.CompositeCircle();
+
+// Create composite object
+var compositeGraphic = new Composite.CompositeGraphic();
+compositeGraphic.Add(circle1);
+compositeGraphic.Add(circle2);
+
+// Draw individual objects and the composite object
+circle1.Draw();
+circle2.Draw();
+compositeGraphic.Draw();
+
+LogSeperator();
+
+//Flyweight
+AddTitle("Flyweight");
+
+var shapeFactory = new Flyweight.ShapeFactory();
+
+var flyCircle1 = shapeFactory.GetShape("5");
+flyCircle1.Draw(1, 2);
+
+var flyCircle2 = shapeFactory.GetShape("10");
+flyCircle2.Draw(3, 4);
+
+LogSeperator();
 #endregion
 
 #region Behavioral
@@ -248,6 +298,50 @@ foreach (var shape in shapes)
 
 LogSeperator();
 
+//Iterator
+AddTitle("Iterator");
+
+var aggregate = new Iterator.ConcreteAggregate();
+var iterator = aggregate.GetIterator();
+
+while (iterator.HasNext())
+{
+    var item = iterator.Next();
+    Console.WriteLine(item);
+}
+
+LogSeperator();
+
+//Memento
+AddTitle("Memento");
+
+var originator = new Memento.Originator();
+var caretaker = new Memento.Caretaker();
+
+originator.State = "State1";
+Console.WriteLine($"Current State: {originator.State}");
+
+caretaker.Memento = originator.CreateMemento();
+
+originator.State = "State2";
+Console.WriteLine($"Updated State: {originator.State}");
+
+originator.RestoreMemento(caretaker.Memento);
+Console.WriteLine($"Restored State: {originator.State}");
+
+LogSeperator();
+
+//Interpreter
+AddTitle("Interpreter");
+
+Interpreter.IExpression expression = new Interpreter.AddExpression(new Interpreter.NumberExpression(1), new Interpreter.NumberExpression(2));
+
+var context = new Interpreter.Context();
+expression.Interpret(context);
+
+Console.WriteLine("Result: " + context.Output);  // Result: 3
+
+LogSeperator();
 #endregion
 
 #region Utils
