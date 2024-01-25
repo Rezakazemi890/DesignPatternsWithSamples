@@ -58,6 +58,17 @@ ironWindowFittingExpert.GetDescription();
 
 LogSeperator();
 
+//Prototype
+AddTitle("Prototype");
+
+var originalCircle = new Prototype.Circle { Radius = 5 };
+// Clone the prototype
+var clonedCircle = (Prototype.Circle)originalCircle.Clone();
+
+originalCircle.Draw();
+clonedCircle.Draw();
+
+LogSeperator();
 #endregion
 
 #region Structural
