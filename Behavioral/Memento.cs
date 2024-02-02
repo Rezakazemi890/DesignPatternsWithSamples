@@ -2,7 +2,7 @@ namespace DesignPattern.Behavioral;
 
 /// <summary>
 /// The Memento Design Pattern is a behavioral pattern
-///that allows an object's internal state to be captured and restored.
+/// that allows an object's internal state to be captured and restored.
 /// It is useful for implementing undo mechanisms or preserving the state of an object at a certain point in time.
 /// </summary>
 public class Memento
