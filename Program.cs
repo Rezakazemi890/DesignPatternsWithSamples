@@ -44,15 +44,15 @@ LogSeperator();
 //Abstract
 AddTitle("Abstract:");
 
-Abstract.IWindowFactory woodenWindowFactory = new Abstract.WoodenWindowFactory();
-Abstract.IWindow woodenWindow = woodenWindowFactory.MakeWindow();
-Abstract.IWindowFittingExpert woodenWindowFittingExpert = woodenWindowFactory.MakeFittingExpert();
+AbstractFactory.IWindowFactory woodenWindowFactory = new AbstractFactory.WoodenWindowFactory();
+AbstractFactory.IWindow woodenWindow = woodenWindowFactory.MakeWindow();
+AbstractFactory.IWindowFittingExpert woodenWindowFittingExpert = woodenWindowFactory.MakeFittingExpert();
 woodenWindow.GetDescription();
 woodenWindowFittingExpert.GetDescription();
 
-Abstract.IWindowFactory ironWindowFactory = new Abstract.IronWindowFactory();
-Abstract.IWindow ironWindow = ironWindowFactory.MakeWindow();
-Abstract.IWindowFittingExpert ironWindowFittingExpert = ironWindowFactory.MakeFittingExpert();
+AbstractFactory.IWindowFactory ironWindowFactory = new AbstractFactory.IronWindowFactory();
+AbstractFactory.IWindow ironWindow = ironWindowFactory.MakeWindow();
+AbstractFactory.IWindowFittingExpert ironWindowFittingExpert = ironWindowFactory.MakeFittingExpert();
 ironWindow.GetDescription();
 ironWindowFittingExpert.GetDescription();
 
