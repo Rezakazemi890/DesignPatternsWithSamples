@@ -5,19 +5,19 @@
 /// This pattern is considered to be a behavioral pattern due to the way
 /// it can alter the program's running behavior.
 /// </summary>
-public class Mediator
+public abstract class Mediator
 {
     // Mediator
-    public interface IAirTrafficControl
+    internal interface IAirTrafficControl
     {
         void RegisterAircraft(IAircraft aircraft);
         void SendWarningMessage(string message, IAircraft aircraft);
     }
 
     // Concrete Mediator
-    public class AirTrafficControl : IAirTrafficControl
+    internal class AirTrafficControl : IAirTrafficControl
     {
-        private List<IAircraft> _aircraftList = new List<IAircraft>();
+        private readonly List<IAircraft> _aircraftList = new List<IAircraft>();
 
         public void RegisterAircraft(IAircraft aircraft)
         {
@@ -27,8 +27,10 @@ public class Mediator
         public void SendWarningMessage(string message, IAircraft sender)
         {
             Console.WriteLine($"ATC: {message}");
-            foreach (var aircraft in _aircraftList)
+            var index = 0;
+            for (; index < _aircraftList.Count; index++)
             {
+                var aircraft = _aircraftList[index];
                 if (aircraft != sender)
                 {
                     aircraft.ReceiveWarning(message);
@@ -38,19 +40,19 @@ public class Mediator
     }
 
     //Colleague
-    public interface IAircraft
+    internal interface IAircraft
     {
         void SendWarning(string message);
         void ReceiveWarning(string message);
     }
 
     // Concrete Colleague
-    public class Aircraft : IAircraft
+    internal class Aircraft : IAircraft
     {
         private readonly string _callSign;
         private readonly IAirTrafficControl _atc;
 
-        public Aircraft(string callSign, IAirTrafficControl atc)
+        internal Aircraft(string callSign, IAirTrafficControl atc)
         {
             _callSign = callSign;
             _atc = atc;

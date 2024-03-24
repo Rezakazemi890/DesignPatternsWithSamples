@@ -6,15 +6,15 @@
 /// contains logic that defines the types of command objects that it can handle;
 /// the rest are passed to the next processing object in the chain.
 /// </summary>
-public class ChainOfResponsibility
+public abstract class ChainOfResponsibility
 {
-    public interface IHelpDeskHandler
+    internal interface IHelpDeskHandler
     {
         void HandleTicket(HelpDeskTicket ticket);
     }
     public record HelpDeskTicket(int Severity, string Description);
-    
-    public class LevelOneSupport : IHelpDeskHandler
+
+    internal class LevelOneSupport : IHelpDeskHandler
     {
         private readonly IHelpDeskHandler _nextHandler = new LevelTwoSupport();
 

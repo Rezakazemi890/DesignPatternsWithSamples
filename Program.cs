@@ -7,7 +7,7 @@ var instance1 = Singleton.GetInstance();
 var instance2 = Singleton.GetInstance();
 Console.WriteLine($"References Are Equal? {ReferenceEquals(instance1, instance2)}");
 
-LogSeperator();
+LogSeparator();
 
 //Simple Factory
 AddTitle("SimpleFactory:");
@@ -16,7 +16,7 @@ var desk = SimpleFactory.DeskFactory.MakeDesk(80, 30, 40);
 Console.WriteLine(
     $"woodenDesk height: {desk.GetHeight()} - width: {desk.GetWidth()} - length: {desk.GetLength()}");
 
-LogSeperator();
+LogSeparator();
 
 //Factory Method
 AddTitle("Factory Method:");
@@ -27,7 +27,7 @@ woodenChairSeller.SellChair();
 var metalChairSeller = new FactoryMethod.MetalChairSeller();
 metalChairSeller.SellChair();
 
-LogSeperator();
+LogSeparator();
 
 //Builder
 AddTitle("Builder:");
@@ -39,7 +39,7 @@ var burger = new Builder.BurgerBuilder(15)
     .Build();
 Console.WriteLine(burger.GetDescription());
 
-LogSeperator();
+LogSeparator();
 
 //Abstract
 AddTitle("Abstract:");
@@ -56,7 +56,7 @@ AbstractFactory.IWindowFittingExpert ironWindowFittingExpert = ironWindowFactory
 ironWindow.GetDescription();
 ironWindowFittingExpert.GetDescription();
 
-LogSeperator();
+LogSeparator();
 
 //Prototype
 AddTitle("Prototype");
@@ -68,7 +68,7 @@ var clonedCircle = (Prototype.Circle)originalCircle.Clone();
 originalCircle.Draw();
 clonedCircle.Draw();
 
-LogSeperator();
+LogSeparator();
 #endregion
 
 #region Structural
@@ -82,7 +82,7 @@ Adapter.IPersianSocket persianSocket = new Adapter.SocketAdapter(europeanSocket)
 Console.WriteLine("Client: Connecting Persian device to socket.");
 persianSocket.Connect();
 
-LogSeperator();
+LogSeparator();
 
 //Decorator
 AddTitle("Decorator:");
@@ -95,7 +95,7 @@ Console.WriteLine($"Plain Pizza: {plainPizza.GetDescription()}, Cost: {plainPizz
 Console.WriteLine($"Cheese Pizza: {cheesePizza.GetDescription()}, Cost: {cheesePizza.GetCost()}T");
 Console.WriteLine($"Deluxe Pizza: {tomatoPizza.GetDescription()}, Cost: {tomatoPizza.GetCost()}T");
 
-LogSeperator();
+LogSeparator();
 
 //Proxy
 AddTitle("Proxy:");
@@ -106,7 +106,7 @@ Proxy.ISensitiveData regularUser = new Proxy.SensitiveDataProxy("User");
 adminData.AccessData();
 regularUser.AccessData();
 
-LogSeperator();
+LogSeparator();
 
 //Facade
 AddTitle("Facade:");
@@ -114,7 +114,7 @@ AddTitle("Facade:");
 var facadeOperator = new Facade.FacadeOperator();
 facadeOperator.PerformOperations();
 
-LogSeperator();
+LogSeparator();
 
 //Bridge
 AddTitle("Bridge");
@@ -122,7 +122,7 @@ AddTitle("Bridge");
 Bridge.Shape redCircle = new Bridge.BridgeCircle(10, 10, 5, new Bridge.DrawApi1());
 redCircle.Draw();
 
-LogSeperator();
+LogSeparator();
 
 //Composite
 AddTitle("Composite");
@@ -141,7 +141,7 @@ circle1.Draw();
 circle2.Draw();
 compositeGraphic.Draw();
 
-LogSeperator();
+LogSeparator();
 
 //Flyweight
 AddTitle("Flyweight");
@@ -154,7 +154,7 @@ flyCircle1.Draw(1, 2);
 var flyCircle2 = shapeFactory.GetShape("10");
 flyCircle2.Draw(3, 4);
 
-LogSeperator();
+LogSeparator();
 #endregion
 
 #region Behavioral
@@ -177,7 +177,7 @@ weatherStation.Detach(observer2);
 
 weatherStation.SetTemperature(28.0f);
 
-LogSeperator();
+LogSeparator();
 
 //Strategy
 AddTitle("Strategy:");
@@ -193,7 +193,7 @@ cart.Checkout(50000);
 cart.SetPaymentStrategy(paypalPayment);
 cart.Checkout(80000);
 
-LogSeperator();
+LogSeparator();
 
 //Chain Of Responsibility
 AddTitle("Chain Of Responsibility:");
@@ -211,7 +211,7 @@ helpDeskHandler.HandleTicket(lowSeverityTicket);
 helpDeskHandler.HandleTicket(mediumSeverityTicket);
 helpDeskHandler.HandleTicket(highSeverityTicket);
 
-LogSeperator();
+LogSeparator();
 
 //Command
 AddTitle("Command:");
@@ -233,7 +233,7 @@ remote.PressOffButton(0);
 remote.PressOnButton(1);
 remote.PressOffButton(1);
 
-LogSeperator();
+LogSeparator();
 
 //Mediator
 
@@ -249,7 +249,7 @@ aircraft1.SendWarning("Traffic ahead.");
 aircraft2.SendWarning("Turbulence reported.");
 aircraft3.SendWarning("Hijack Warning.");
 
-LogSeperator();
+LogSeparator();
 
 //State
 AddTitle("State");
@@ -261,7 +261,7 @@ trafficLight.Change(); // Red to Yellow
 trafficLight.Change(); // Yellow to Green
 trafficLight.Change(); // Green to Red
 
-LogSeperator();
+LogSeparator();
 
 //Template Method
 
@@ -275,7 +275,7 @@ Console.WriteLine("\nMaking coffee:");
 TemplateMethod.Coffee coffee = new TemplateMethod.Coffee();
 coffee.PrepareBeverage();
 
-LogSeperator();
+LogSeparator();
 
 //Visitor
 
@@ -296,7 +296,7 @@ foreach (var shape in shapes)
     shape.Accept(areaCalculator);
 }
 
-LogSeperator();
+LogSeparator();
 
 //Iterator
 AddTitle("Iterator");
@@ -310,7 +310,7 @@ while (iterator.HasNext())
     Console.WriteLine(item);
 }
 
-LogSeperator();
+LogSeparator();
 
 //Memento
 AddTitle("Memento");
@@ -329,7 +329,7 @@ Console.WriteLine($"Updated State: {originator.State}");
 originator.RestoreMemento(caretaker.Memento);
 Console.WriteLine($"Restored State: {originator.State}");
 
-LogSeperator();
+LogSeparator();
 
 //Interpreter
 AddTitle("Interpreter");
@@ -341,14 +341,15 @@ expression.Interpret(context);
 
 Console.WriteLine("Result: " + context.Output);  // Result: 3
 
-LogSeperator();
+LogSeparator();
 #endregion
 
 #region Utils
 
 Console.ReadLine();
+return;
 
-void LogSeperator()
+void LogSeparator()
 {
     Console.WriteLine();
     Console.ForegroundColor = ConsoleColor.DarkCyan;

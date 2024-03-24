@@ -7,18 +7,18 @@
 /// This pattern is useful when you have a set of classes with a fixed structure,
 /// but you want to perform different operations on them without modifying their code.
 /// </summary>
-public class Visitor
+public abstract class Visitor
 {
-    public interface IShape
+    internal interface IShape
     {
         void Accept(IVisitor visitor);
     }
 
-    public class Circle : IShape
+    internal class Circle : IShape
     {
-        public double Radius { get; set; }
+        internal double Radius { get; set; }
 
-        public Circle(double radius)
+        internal Circle(double radius)
         {
             Radius = radius;
         }
@@ -29,11 +29,11 @@ public class Visitor
         }
     }
 
-    public class Square : IShape
+    internal class Square : IShape
     {
-        public double Side { get; set; }
+        internal double Side { get; set; }
 
-        public Square(double side)
+        internal Square(double side)
         {
             Side = side;
         }
@@ -44,23 +44,23 @@ public class Visitor
         }
     }
 
-    public interface IVisitor
+    internal interface IVisitor
     {
         void VisitCircle(Circle circle);
         void VisitSquare(Square square);
     }
 
-    public class AreaCalculator : IVisitor
+    internal class AreaCalculator : IVisitor
     {
         public void VisitCircle(Circle circle)
         {
-            double area = Math.PI * Math.Pow(circle.Radius, 2);
+            var area = Math.PI * Math.Pow(circle.Radius, 2);
             Console.WriteLine($"Area of Circle with radius {circle.Radius}: {area}");
         }
 
         public void VisitSquare(Square square)
         {
-            double area = Math.Pow(square.Side, 2);
+            var area = Math.Pow(square.Side, 2);
             Console.WriteLine($"Area of Square with side {square.Side}: {area}");
         }
     }

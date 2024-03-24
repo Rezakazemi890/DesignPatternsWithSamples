@@ -5,116 +5,116 @@
 /// information needed to perform an action or trigger an event at a later time.
 /// This information includes the method name, the object that owns the method and values for the method parameters.
 /// </summary>
-public class Command
+public abstract class Command
 {
-    public interface ICommand
+    internal interface ICommand
     {
         void Execute();
     }
 
-    public class Light
+    internal class Light
     {
-        public void TurnOn()
+        public static void TurnOn()
         {
             Console.WriteLine("Light is on");
         }
 
-        public void TurnOff()
+        public static void TurnOff()
         {
             Console.WriteLine("Light is off");
         }
     }
 
-    public class Tv
+    internal class Tv
     {
-        public void TurnOn()
+        public static void TurnOn()
         {
             Console.WriteLine("TV is on");
         }
 
-        public void TurnOff()
+        public static void TurnOff()
         {
             Console.WriteLine("TV is off");
         }
     }
 
-    public class LightOnCommand : ICommand
+    internal class LightOnCommand : ICommand
     {
         private readonly Light _light;
 
-        public LightOnCommand(Light light)
+        internal LightOnCommand(Light light)
         {
             _light = light;
         }
 
         public void Execute()
         {
-            _light.TurnOn();
+            Light.TurnOn();
         }
     }
 
-    public class LightOffCommand : ICommand
+    internal class LightOffCommand : ICommand
     {
         private readonly Light _light;
 
-        public LightOffCommand(Light light)
+        internal LightOffCommand(Light light)
         {
             _light = light;
         }
 
         public void Execute()
         {
-            _light.TurnOff();
+            Light.TurnOff();
         }
     }
 
-    public class TvOnCommand : ICommand
+    internal class TvOnCommand : ICommand
     {
         private readonly Tv _tv;
 
-        public TvOnCommand(Tv tv)
+        internal TvOnCommand(Tv tv)
         {
             _tv = tv;
         }
 
         public void Execute()
         {
-            _tv.TurnOn();
+            Tv.TurnOn();
         }
     }
 
-    public class TvOffCommand : ICommand
+    internal class TvOffCommand : ICommand
     {
         private readonly Tv _tv;
 
-        public TvOffCommand(Tv tv)
+        internal TvOffCommand(Tv tv)
         {
             _tv = tv;
         }
 
         public void Execute()
         {
-            _tv.TurnOff();
+            Tv.TurnOff();
         }
     }
 
-    public class RemoteControl
+    internal class RemoteControl
     {
         private readonly List<ICommand> _onCommands = new List<ICommand>();
         private readonly List<ICommand> _offCommands = new List<ICommand>();
 
-        public void SetCommand(ICommand onCommand, ICommand offCommand)
+        internal void SetCommand(ICommand onCommand, ICommand offCommand)
         {
             _onCommands.Add(onCommand);
             _offCommands.Add(offCommand);
         }
 
-        public void PressOnButton(int slot)
+        internal void PressOnButton(int slot)
         {
             _onCommands[slot].Execute();
         }
 
-        public void PressOffButton(int slot)
+        internal void PressOffButton(int slot)
         {
             _offCommands[slot].Execute();
         }

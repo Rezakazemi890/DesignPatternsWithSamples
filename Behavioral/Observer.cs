@@ -5,25 +5,25 @@
 /// called observers, and notifies them automatically of any state changes,
 /// usually by calling one of their methods.
 /// </summary>
-public class Observer
+public abstract class Observer
 {
-    public interface IObserver
+    internal interface IObserver
     {
         void Update(float temperature);
     }
 
-    public interface ISubject
+    private interface ISubject
     {
         void Attach(IObserver observer);
         void Detach(IObserver observer);
         void NotifyObservers();
     }
 
-    public class ConcreteObserver : IObserver
+    internal class ConcreteObserver : IObserver
     {
-        private string _name;
+        private readonly string _name;
 
-        public ConcreteObserver(string name)
+        internal ConcreteObserver(string name)
         {
             _name = name;
         }
@@ -34,9 +34,9 @@ public class Observer
         }
     }
 
-    public class WeatherStation : ISubject
+    internal class WeatherStation : ISubject
     {
-        private List<IObserver> _observers = new List<IObserver>();
+        private readonly List<IObserver> _observers = new List<IObserver>();
         private float _temperature;
 
         public void Attach(IObserver observer)
@@ -49,7 +49,7 @@ public class Observer
             _observers.Remove(observer);
         }
 
-        public void SetTemperature(float temperature)
+        internal void SetTemperature(float temperature)
         {
             _temperature = temperature;
             NotifyObservers();

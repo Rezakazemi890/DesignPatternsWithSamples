@@ -4,52 +4,52 @@ namespace DesignPattern.Behavioral;
 /// The Interpreter Design Pattern is a behavioral pattern that defines a grammar for interpreting
 /// the sentences of a language and provides an interpreter to interpret those sentences.
 /// </summary>
-public class Interpreter
+public abstract class Interpreter
 {
-    public class Context
+    internal class Context
     {
-        public string Input { get; set; }
+        public string? Input { get; set; }
         public int Output { get; set; }
     }
 
-    public interface IExpression
+    internal interface IExpression
     {
         void Interpret(Context context);
     }
 
-    public class NumberExpression : IExpression
+    internal class NumberExpression : IExpression
     {
-        private readonly int number;
+        private readonly int _number;
 
-        public NumberExpression(int number)
+        internal NumberExpression(int number)
         {
-            this.number = number;
+            this._number = number;
         }
 
         public void Interpret(Context context)
         {
-            context.Output = number;
+            context.Output = _number;
         }
     }
 
-    public class AddExpression : IExpression
+    internal class AddExpression : IExpression
     {
-        private readonly IExpression left;
-        private readonly IExpression right;
+        private readonly IExpression _left;
+        private readonly IExpression _right;
 
-        public AddExpression(IExpression left, IExpression right)
+        internal AddExpression(IExpression left, IExpression right)
         {
-            this.left = left;
-            this.right = right;
+            this._left = left;
+            this._right = right;
         }
 
         public void Interpret(Context context)
         {
-            left.Interpret(context);
-            int leftValue = context.Output;
+            _left.Interpret(context);
+            var leftValue = context.Output;
 
-            right.Interpret(context);
-            int rightValue = context.Output;
+            _right.Interpret(context);
+            var rightValue = context.Output;
 
             context.Output = leftValue + rightValue;
         }

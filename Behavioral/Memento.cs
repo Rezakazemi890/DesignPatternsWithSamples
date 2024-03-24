@@ -5,35 +5,35 @@ namespace DesignPattern.Behavioral;
 /// that allows an object's internal state to be captured and restored.
 /// It is useful for implementing undo mechanisms or preserving the state of an object at a certain point in time.
 /// </summary>
-public class Memento
+public abstract class Memento
 {
-    public class Mementos
+    internal class Mementos
     {
-        public string State { get; private set; }
+        internal string State { get; private set; }
 
-        public Mementos(string state)
+        internal Mementos(string state)
         {
             State = state;
         }
     }
 
-    public class Originator
+    internal class Originator
     {
-        public string State { get; set; }
+        internal string State { get; set; }
 
-        public Mementos CreateMemento()
+        internal Mementos CreateMemento()
         {
             return new Mementos(State);
         }
 
-        public void RestoreMemento(Mementos memento)
+        internal void RestoreMemento(Mementos memento)
         {
             State = memento.State;
         }
     }
 
-    public class Caretaker
+    internal class Caretaker
     {
-        public Mementos Memento { get; set; }
+        internal Mementos Memento { get; set; }
     }
 }

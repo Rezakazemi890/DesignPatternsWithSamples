@@ -8,14 +8,14 @@ using System;
 /// to these classes. This promotes a clean and modular design, making it easier to add new states or modify existing ones without
 /// affecting the overall functionality.
 /// </summary>
-public class State
+public abstract class State
 {
     public interface ITrafficLightState
     {
         void Handle(TrafficLight trafficLight);
     }
-    
-    public class RedState : ITrafficLightState
+
+    private class RedState : ITrafficLightState
     {
         public void Handle(TrafficLight trafficLight)
         {
@@ -25,7 +25,7 @@ public class State
         }
     }
 
-    public class YellowState : ITrafficLightState
+    private class YellowState : ITrafficLightState
     {
         public void Handle(TrafficLight trafficLight)
         {
@@ -35,7 +35,7 @@ public class State
         }
     }
 
-    public class GreenState : ITrafficLightState
+    private class GreenState : ITrafficLightState
     {
         public void Handle(TrafficLight trafficLight)
         {
@@ -44,23 +44,23 @@ public class State
             trafficLight.SetState(new RedState());
         }
     }
-    
+
     public class TrafficLight
     {
         private ITrafficLightState _currentState;
 
-        public TrafficLight()
+        internal TrafficLight()
         {
             // Initial state is Red
             _currentState = new RedState();
         }
 
-        public void SetState(ITrafficLightState state)
+        internal void SetState(ITrafficLightState state)
         {
             _currentState = state;
         }
 
-        public void Change()
+        internal void Change()
         {
             _currentState.Handle(this);
         }
