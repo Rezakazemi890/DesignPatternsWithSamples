@@ -3,9 +3,9 @@
 /// <summary>
 /// This is useful when exactly one object is needed to coordinate actions across the system.
 /// </summary>
-public class Singleton
+internal class Singleton
 {
-    static Singleton _instance;
+    private static Singleton _instance = null!;
 
     private Singleton()
     {
@@ -13,9 +13,6 @@ public class Singleton
     
     public static Singleton GetInstance()
     {
-        if (_instance == null) {
-            _instance = new Singleton();
-        }
-        return _instance;
+        return _instance ??= new Singleton();
     }
 }

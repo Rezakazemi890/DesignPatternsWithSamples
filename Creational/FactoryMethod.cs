@@ -8,14 +8,14 @@
 /// child classes, or implemented in a base class and optionally overridden by
 /// derived classes—rather than by calling a constructor.
 /// </summary>
-public class FactoryMethod
+public abstract class FactoryMethod
 {
-    public interface IChair
+    internal interface IChair
     {
         void CreateChair();
     }
 
-    public class WoodenChair : IChair
+    private class WoodenChair : IChair
     {
         public void CreateChair()
         {
@@ -23,7 +23,7 @@ public class FactoryMethod
         }
     }
 
-    public class MetalChair : IChair
+    private class MetalChair : IChair
     {
         public void CreateChair()
         {
@@ -31,18 +31,18 @@ public class FactoryMethod
         }
     }
 
-    public abstract class ChairSeller
+    internal abstract class ChairSeller
     {
         protected abstract IChair ChairCreator();
 
-        public void SellChair()
+        internal void SellChair()
         {
             var creator = this.ChairCreator();
             creator.CreateChair();
         }
     }
 
-    public class WoodenChairSeller : ChairSeller
+    internal class WoodenChairSeller : ChairSeller
     {
         protected override IChair ChairCreator()
         {
@@ -50,7 +50,7 @@ public class FactoryMethod
         }
     }
 
-    public class MetalChairSeller : ChairSeller
+    internal class MetalChairSeller : ChairSeller
     {
         protected override IChair ChairCreator()
         {

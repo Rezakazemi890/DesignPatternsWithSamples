@@ -6,17 +6,17 @@ namespace DesignPattern.Creational;
 /// The builder pattern is an object creation software design pattern
 /// with the intentions of finding a solution to the telescoping constructor anti-pattern.
 /// </summary>
-public class Builder
+public abstract class Builder
 {
-    public class Burger
+    internal class Burger
     {
-        private int _size;
-        private bool _cheese;
-        private bool _pepperoni;
-        private bool _lettuce;
-        private bool _tomato;
+        private readonly int _size;
+        private readonly bool _cheese;
+        private readonly bool _pepperoni;
+        private readonly bool _lettuce;
+        private readonly bool _tomato;
 
-        public Burger(BurgerBuilder builder)
+        internal Burger(BurgerBuilder builder)
         {
             this._size = builder.Size;
             this._cheese = builder.Cheese;
@@ -25,7 +25,7 @@ public class Builder
             this._tomato = builder.Tomato;
         }
 
-        public string GetDescription()
+        internal string GetDescription()
         {
             var sb = new StringBuilder();
             sb.Append($"This is {this._size} cm Burger. have cheese: {this._cheese} - have pepperoni: {this._pepperoni} - have lettuce: {this._lettuce} - have tomato: {this._tomato}");
@@ -33,43 +33,43 @@ public class Builder
         }
     }
 
-    public class BurgerBuilder {
-        public int Size;
-        public bool Cheese;
-        public bool Pepperoni;
-        public bool Lettuce;
-        public bool Tomato;
+    internal class BurgerBuilder {
+        internal readonly int Size;
+        internal bool Cheese;
+        internal bool Pepperoni;
+        internal bool Lettuce;
+        internal bool Tomato;
 
-        public BurgerBuilder(int size)
+        internal BurgerBuilder(int size)
         {
             this.Size = size;
         }
 
-        public BurgerBuilder AddCheese()
+        internal BurgerBuilder AddCheese()
         {
             this.Cheese = true;
             return this;
         }
 
-        public BurgerBuilder AddPepperoni()
+        internal BurgerBuilder AddPepperoni()
         {
             this.Pepperoni = true;
             return this;
         }
 
-        public BurgerBuilder AddLettuce()
+        internal BurgerBuilder AddLettuce()
         {
             this.Lettuce = true;
             return this;
         }
 
-        public BurgerBuilder AddTomato()
+        internal BurgerBuilder AddTomato()
         {
             this.Tomato = true;
             return this;
         }
 
-        public Burger Build()
+        internal Burger Build()
         {
             return new Burger(this);
         }
