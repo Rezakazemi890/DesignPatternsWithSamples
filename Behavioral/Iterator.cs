@@ -4,61 +4,53 @@ namespace DesignPattern.Behavioral;
 /// The Iterator Design Pattern is a behavioral pattern that provides a way to access the elements of
 /// an aggregate object sequentially without exposing its underlying representation.
 /// </summary>
-public class Iterator
+public abstract class Iterator
 {
-    public interface IAggregate
+    private interface IAggregate
     {
         IIterator GetIterator();
     }
 
-    public interface IIterator
+    internal interface IIterator
     {
         bool HasNext();
         object Next();
     }
 
-    public class ConcreteAggregate : IAggregate
+    internal class ConcreteAggregate : IAggregate
     {
-        private readonly object[] items;
-
-        public ConcreteAggregate()
-        {
-            items = new object[] { "Item 1", "Item 2", "Item 3" };
-        }
+        private readonly object[] _items = new object[] { "Item 1", "Item 2", "Item 3" };
 
         public IIterator GetIterator()
         {
             return new ConcreteIterator(this);
         }
 
-        public int Count
-        {
-            get { return items.Length; }
-        }
+        internal int Count => _items.Length;
 
-        public object this[int index] => items[index];
+        internal object this[int index] => _items[index];
     }
 
-    public class ConcreteIterator : IIterator
+    private class ConcreteIterator : IIterator
     {
-        private readonly ConcreteAggregate aggregate;
-        private int currentIndex = 0;
+        private readonly ConcreteAggregate _aggregate;
+        private int _currentIndex = 0;
 
-        public ConcreteIterator(ConcreteAggregate aggregate)
+        internal ConcreteIterator(ConcreteAggregate aggregate)
         {
-            this.aggregate = aggregate;
+            this._aggregate = aggregate;
         }
 
         public bool HasNext()
         {
-            return currentIndex < aggregate.Count;
+            return _currentIndex < _aggregate.Count;
         }
 
         public object Next()
         {
             if (HasNext())
             {
-                return aggregate[currentIndex++];
+                return _aggregate[_currentIndex++];
             }
             else
             {

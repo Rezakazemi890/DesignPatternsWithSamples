@@ -5,14 +5,14 @@ namespace DesignPattern.Structural;
 /// represent part-whole hierarchies. It allows clients to treat individual objects and compositions of objects
 /// uniformly.
 /// </summary>
-public class Composite
+public abstract class Composite
 {
-    public interface IGraphic
+    internal interface IGraphic
     {
         void Draw();
     }
 
-    public class CompositeCircle : IGraphic
+    internal class CompositeCircle : IGraphic
     {
         public void Draw()
         {
@@ -20,19 +20,19 @@ public class Composite
         }
     }
 
-    public class CompositeGraphic : IGraphic
+    internal class CompositeGraphic : IGraphic
     {
-        private readonly List<IGraphic> graphics = new List<IGraphic>();
+        private readonly List<IGraphic> _graphics = new List<IGraphic>();
 
-        public void Add(IGraphic graphic)
+        internal void Add(IGraphic graphic)
         {
-            graphics.Add(graphic);
+            _graphics.Add(graphic);
         }
 
         public void Draw()
         {
             Console.WriteLine("Drawing Composite Graphic");
-            foreach (var graphic in graphics)
+            foreach (var graphic in _graphics)
             {
                 graphic.Draw();
             }

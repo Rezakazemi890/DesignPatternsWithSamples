@@ -5,26 +5,26 @@ namespace DesignPattern.Structural;
 /// allowing them to vary independently. It helps in avoiding a permanent binding between an abstraction and
 /// its implementation.
 /// </summary>
-public class Bridge
+public abstract class Bridge
 {
-    public abstract class Shape
+    internal abstract class Shape
     {
-        protected IDrawApi drawApi;
+        protected readonly IDrawApi DrawApi;
 
         protected Shape(IDrawApi drawApi)
         {
-            this.drawApi = drawApi;
+            this.DrawApi = drawApi;
         }
 
-        public abstract void Draw();
+        internal abstract void Draw();
     }
 
-    public interface IDrawApi
+    internal interface IDrawApi
     {
         void DrawCircle(int radius, int x, int y);
     }
 
-    public class DrawApi1 : IDrawApi
+    internal class DrawApi1 : IDrawApi
     {
         public void DrawCircle(int radius, int x, int y)
         {
@@ -32,21 +32,21 @@ public class Bridge
         }
     }
 
-    public class BridgeCircle : Shape
+    internal class BridgeCircle : Shape
     {
-        private int x, y, radius;
+        private readonly int _x, _y, _radius;
 
-        public BridgeCircle(int x, int y, int radius, IDrawApi drawApi)
+        internal BridgeCircle(int x, int y, int radius, IDrawApi drawApi)
             : base(drawApi)
         {
-            this.x = x;
-            this.y = y;
-            this.radius = radius;
+            this._x = x;
+            this._y = y;
+            this._radius = radius;
         }
 
-        public override void Draw()
+        internal override void Draw()
         {
-            drawApi.DrawCircle(radius, x, y);
+            DrawApi.DrawCircle(_radius, _x, _y);
         }
     }
 }

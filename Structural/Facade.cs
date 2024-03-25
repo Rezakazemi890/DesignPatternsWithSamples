@@ -4,14 +4,14 @@
 /// A facade is an object that provides a simplified interface
 /// to a larger body of code, such as a class library.
 /// </summary>
-public class Facade
+public abstract class Facade
 {
-    public interface ISubsystem
+    private interface ISubsystem
     {
         void Operation();
     }
 
-    public class SubsystemA : ISubsystem
+    private class SubsystemA : ISubsystem
     {
         public void Operation()
         {
@@ -19,7 +19,7 @@ public class Facade
         }
     }
 
-    public class SubsystemB : ISubsystem
+    private class SubsystemB : ISubsystem
     {
         public void Operation()
         {
@@ -27,7 +27,7 @@ public class Facade
         }
     }
 
-    public class SubsystemC : ISubsystem
+    private class SubsystemC : ISubsystem
     {
         public void Operation()
         {
@@ -35,13 +35,13 @@ public class Facade
         }
     }
 
-    public class FacadeOperator
+    internal class FacadeOperator
     {
-        private ISubsystem _subsystemA = new SubsystemA();
-        private ISubsystem _subsystemB = new SubsystemB();
-        private ISubsystem _subsystemC = new SubsystemC();
+        private readonly ISubsystem _subsystemA = new SubsystemA();
+        private readonly ISubsystem _subsystemB = new SubsystemB();
+        private readonly ISubsystem _subsystemC = new SubsystemC();
 
-        public void PerformOperations()
+        internal void PerformOperations()
         {
             Console.WriteLine("Facade is performing complex operations:");
             _subsystemA.Operation();

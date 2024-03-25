@@ -5,22 +5,22 @@
 /// – formally a factory is a function or method that returns objects of
 /// a varying prototype or class from some method call
 /// </summary>
-public class SimpleFactory
+public abstract class SimpleFactory
 {
-    public interface IDesk
+    internal interface IDesk
     {
         int GetHeight();
         int GetWidth();
         int GetLength();
     }
 
-    public class WoodenDesk : IDesk
+    private class WoodenDesk : IDesk
     {
         private int Height { get; set; }
         private int Width { get; set; }
         private int Length { get; set; }
 
-        public WoodenDesk(int height, int width, int length)
+        internal WoodenDesk(int height, int width, int length)
         {
             this.Height = height;
             this.Width = width;
@@ -43,9 +43,9 @@ public class SimpleFactory
         }
     }
 
-    public static class DeskFactory
+    internal static class DeskFactory
     {
-        public static IDesk MakeDesk(int height, int width, int length)
+        internal static IDesk MakeDesk(int height, int width, int length)
         {
             return new WoodenDesk(height, width, length);
         }

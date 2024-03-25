@@ -4,9 +4,9 @@
 /// The abstract factory pattern provides a way to encapsulate a
 /// group of individual factories that have a common theme without specifying their concrete classes
 /// </summary>
-public class AbstractFactory
+public abstract class AbstractFactory
 {
-    public interface IWindow
+    internal interface IWindow
     {
         void GetDescription();
     }
@@ -27,7 +27,7 @@ public class AbstractFactory
         }
     }
 
-    public interface IWindowFittingExpert
+    internal interface IWindowFittingExpert
     {
         void GetDescription();
     }
@@ -48,13 +48,13 @@ public class AbstractFactory
         }
     }
 
-    public interface IWindowFactory
+    internal interface IWindowFactory
     {
         IWindow MakeWindow();
         IWindowFittingExpert MakeFittingExpert();
     }
 
-    public class WoodenWindowFactory : IWindowFactory
+    internal class WoodenWindowFactory : IWindowFactory
     {
         public IWindow MakeWindow()
         {
@@ -67,7 +67,7 @@ public class AbstractFactory
         }
     }
 
-    public class IronWindowFactory : IWindowFactory
+    internal class IronWindowFactory : IWindowFactory
     {
         public IWindow MakeWindow()
         {

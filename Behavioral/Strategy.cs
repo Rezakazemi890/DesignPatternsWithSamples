@@ -4,18 +4,18 @@
 /// he strategy pattern (also known as the policy pattern) is a behavioural software design
 /// pattern that enables an algorithm's behavior to be selected at runtime.
 /// </summary>
-public class Strategy
+public abstract class Strategy
 {
-    public interface IPaymentStrategy
+    internal interface IPaymentStrategy
     {
         void ProcessPayment(double amount);
     }
 
-    public class CreditCardPaymentStrategy : IPaymentStrategy
+    internal class CreditCardPaymentStrategy : IPaymentStrategy
     {
-        private string _cardNumber;
+        private readonly string _cardNumber;
 
-        public CreditCardPaymentStrategy(string cardNumber)
+        internal CreditCardPaymentStrategy(string cardNumber)
         {
             _cardNumber = cardNumber;
         }
@@ -26,11 +26,11 @@ public class Strategy
         }
     }
 
-    public class PayPalPaymentStrategy : IPaymentStrategy
+    internal class PayPalPaymentStrategy : IPaymentStrategy
     {
-        private string _email;
+        private readonly string _email;
 
-        public PayPalPaymentStrategy(string email)
+        internal PayPalPaymentStrategy(string email)
         {
             _email = email;
         }
@@ -41,16 +41,16 @@ public class Strategy
         }
     }
 
-    public class ShoppingCart
+    internal class ShoppingCart
     {
-        private IPaymentStrategy _paymentStrategy;
+        private IPaymentStrategy _paymentStrategy = null!;
 
-        public void SetPaymentStrategy(IPaymentStrategy paymentStrategy)
+        internal void SetPaymentStrategy(IPaymentStrategy paymentStrategy)
         {
             _paymentStrategy = paymentStrategy;
         }
 
-        public void Checkout(double totalAmount)
+        internal void Checkout(double totalAmount)
         {
             _paymentStrategy.ProcessPayment(totalAmount);
             Console.WriteLine($"Payment of {totalAmount}T successfully processed.");

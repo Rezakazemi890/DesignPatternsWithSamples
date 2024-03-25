@@ -6,12 +6,12 @@
 /// algorithm without changing its structure. This pattern promotes code reuse by providing a common
 /// template for an algorithm while allowing individual steps to be implemented by subclasses.
 /// </summary>
-public class TemplateMethod
+public abstract class TemplateMethod
 {
-    public abstract class BeverageTemplate
+    internal abstract class BeverageTemplate
     {
         // The template method that defines the algorithm
-        public void PrepareBeverage()
+        internal void PrepareBeverage()
         {
             BoilWater();
             Brew();
@@ -22,18 +22,18 @@ public class TemplateMethod
         protected abstract void Brew();
         protected abstract void AddCondiments();
         
-        private void BoilWater()
+        private static void BoilWater()
         {
             Console.WriteLine("Boiling water");
         }
 
-        private void PourInCup()
+        private static void PourInCup()
         {
             Console.WriteLine("Pouring into cup");
         }
     }
-    
-    public class Tea : BeverageTemplate
+
+    internal class Tea : BeverageTemplate
     {
         protected override void Brew()
         {
@@ -45,8 +45,8 @@ public class TemplateMethod
             Console.WriteLine("Adding lemon");
         }
     }
-    
-    public class Coffee : BeverageTemplate
+
+    internal class Coffee : BeverageTemplate
     {
         protected override void Brew()
         {
