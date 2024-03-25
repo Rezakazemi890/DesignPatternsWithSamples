@@ -5,13 +5,14 @@
 /// to be used as another interface. It is often used to make existing classes work with others without
 /// modifying their source code.
 /// </summary>
-public class Adapter
+public abstract class Adapter
 {
-    public interface IPersianSocket
+    internal interface IPersianSocket
     {
         void Connect();
     }
-    public class EuropeanSocket
+
+    internal class EuropeanSocket
     {
         public void PlugIn()
         {
@@ -19,9 +20,9 @@ public class Adapter
         }
     }
 
-    public class SocketAdapter : IPersianSocket
+    internal class SocketAdapter : IPersianSocket
     {
-        private EuropeanSocket _europeanSocket;
+        private readonly EuropeanSocket _europeanSocket;
 
         public SocketAdapter(EuropeanSocket europeanSocket)
         {

@@ -5,14 +5,14 @@
 /// access the real serving object behind the scenes. Use of the proxy can simply be
 /// forwarding to the real object, or can provide additional logic.
 /// </summary>
-public class Proxy
+public abstract class Proxy
 {
-    public interface ISensitiveData
+    internal interface ISensitiveData
     {
         void AccessData();
     }
 
-    public class RealSensitiveData : ISensitiveData
+    private class RealSensitiveData : ISensitiveData
     {
         public void AccessData()
         {
@@ -20,12 +20,12 @@ public class Proxy
         }
     }
 
-    public class SensitiveDataProxy : ISensitiveData
+    internal class SensitiveDataProxy : ISensitiveData
     {
         private readonly RealSensitiveData _realSensitiveData;
         private readonly string _userRole;
 
-        public SensitiveDataProxy(string userRole)
+        internal SensitiveDataProxy(string userRole)
         {
             _userRole = userRole;
             _realSensitiveData = new RealSensitiveData();
